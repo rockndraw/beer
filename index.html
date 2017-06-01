@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Интернет-магазин пива</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/bubbles.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="icon" type="image/png" href="img/favicon.png">
+    </head>
+    <body>
+      <header>
+        <div class="logo">
+          Octobeer.ru
+          <span> | Гипермаркет отличного пива</span>
+        </div>
+      </header>
+      <div class="main-carousel">
+        <div class="main-carousel__item main-carousel__item--blanche">
+          <div class="bubbles">
+          </div>
+          <div class="beer">
+            <div class="beer__caption">
+              <h2>Blanche</h2>
+              <h3>Белое пшеничное</h3>
+            </div>
+            <div class="beer__plus">
+              <img src="img/plus-blanche.png" />
+            </div>
+          </div>
+        </div>
+        <div class="main-carousel__item main-carousel__item--lager">
+          <div class="bubbles">
+          </div>
+          <div class="beer">
+            <div class="beer__caption">
+              <h2>Lager</h2>
+              <h3>Светлый лагер</h3>
+            </div>
+            <div class="beer__plus">
+              <img src="img/plus-lager.png" />
+            </div>
+          </div>
+        </div>
+        <div class="main-carousel__item main-carousel__item--ale">
+          <div class="bubbles">
+          </div>
+          <div class="beer">
+            <div class="beer__caption">
+              <h2>Light Ale</h2>
+              <h3>Светлый эль</h3>
+            </div>
+            <div class="beer__plus">
+              <img src="img/plus-ale.png" />
+            </div>
+          </div>
+        </div>
+        <div class="main-carousel__item main-carousel__item--dark">
+          <div class="bubbles">
+          </div>
+          <div class="beer">
+            <div class="beer__caption">
+              <h2>Dark Ale</h2>
+              <h3>Темный эль</h3>
+            </div>
+            <div class="beer__plus">
+              <img src="img/plus-dark.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <img src="img/home-footer.png" />
+      </footer>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/bubbles.js"></script>
+    <script>
+        var carousel_left = 0;
+        var stop_carousel = false;
+        var close_carousel = false;
+        setInterval(function() {
+          if ((!stop_carousel)&&(!close_carousel)) {
+            carousel_left++;
+            if (carousel_left>2){carousel_left = 0};
+            if (carousel_left==2){
+              $('.main-carousel').css('transform','translateX('+ (-40 * carousel_left) + 'vw)');
+            } else {
+              $('.main-carousel').css('transform','translateX('+ (-45 * carousel_left) + 'vw)');
+            }
+          }
+        }, 3000);
+
+        $('.beer__plus').mouseover(function() {
+          stop_carousel = true;
+        })
+        $('.beer__plus').mouseout(function() {
+          stop_carousel = false;
+        })
+        $('.beer__plus').click(function() {
+          $('footer').addClass('hidden');
+          close_carousel = true;
+          var beer_item = $(this).parent().parent().index();
+          $('.main-carousel').css('transform','translateX(' + (-45 * beer_item) + 'vw)');
+          $(this).parent().parent().addClass('active');
+          $(this).addClass('close');
+        });
+
+    </script>
+</html>
