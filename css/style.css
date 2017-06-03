@@ -10,11 +10,11 @@ body {
 header {
   position: fixed;
   z-index: 10;
-  background: rgba(255,255,255,.7);
+  background: rgba(255, 255, 255, .7);
   width: 100%;
   height: 90px;
   top: 0;
-  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 .logo {
   margin-left: 50px;
@@ -57,6 +57,9 @@ header {
 .main-carousel__item.active {
   width: 100vw;
 }
+.main-carousel__item.active .beer__plus {
+  transform: rotate(45deg);
+}
 .main-carousel__item--blanche {
   background: #f7f4bf;
 }
@@ -75,7 +78,7 @@ header {
   position: absolute;
   top: 200px;
   background: #f8f6d6;
-  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2);
   z-index: 4;
 }
 .main-carousel__item--lager .beer {
@@ -90,6 +93,8 @@ header {
 .beer__caption {
   padding-left: 50px;
   width: 100%;
+  padding-right: 140px;
+  box-sizing: border-box;
 }
 .beer__caption h2, .beer__caption h3 {
   color: #e2cfa1;
@@ -117,24 +122,34 @@ header {
 .main-carousel__item--dark .beer__caption h3 {
   color: #341510;
 }
+
 .beer__plus {
   position: absolute;
   top: 60px;
   right: 50px;
   width: 80px;
+  height: 80px;
   cursor: pointer;
-  transition: .5s;
+  transition-duration: .5s;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.beer__plus.close {
-  transform: rotate(45deg);
+.beer__plus--blanche {
+  background-image: url(../img/plus-blanche.png);
 }
-.beer__plus img {
-  width: 100%;
+.beer__plus--ale {
+  background-image: url(../img/plus-ale.png);
+}
+.beer__plus--dark {
+  background-image: url(../img/plus-dark.png);
+}
+.beer__plus--lager {
+  background-image: url(../img/plus-lager.png);
 }
 .beer__plus:hover {
   transform: scale(1.2);
 }
-.beer__plus.close:hover {
+.beer__plus:hover {
   transform: rotate(45deg) scale(1.2);
 }
 footer {
@@ -145,6 +160,10 @@ footer {
   pointer-events: none;
   padding: 0;
   transition: .6s;
+  height: 258px;
+  pointer-events: none;
+  background-image: url(../img/home-footer.png);
+  background-size: contain;
 }
 footer.hidden {
   transform: translateY(100%);
@@ -153,5 +172,5 @@ footer img {
   width: 100%;
   display: block;
   height: auto;
-  filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
 }
